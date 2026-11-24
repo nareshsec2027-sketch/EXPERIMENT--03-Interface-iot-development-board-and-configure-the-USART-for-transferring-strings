@@ -1,23 +1,22 @@
 # EXPERIMENT--03-INTERFACING IOT DEVELOPMENT BOARD AND CONFIGURE USART FOR TRANSFERRING STRINGS 
 
-**DATE:**
 
-**NAME:**
+**NAME: NARESH PS**
+  
+**ROLL NO: 212223040127** 
 
-**ROLL NO:**
+**DEPARTMENT: CSE**
 
-**DEPARTMENT:**
-
-## Aim:
+# Aim:
 
 To Interface iot development board for configuring the usart and transfer strings through it 
 
-## Components required: 
+# Components required: 
 
 STM32 CUBE IDE, ARM IOT development board,  STM programmer tool, Serial port utility tool 
 
 
-## Theory 
+# Theory 
 
 The full form of an ARM is an advanced reduced instruction set computer (RISC) machine, and it is a 32-bit processor architecture expanded by ARM holdings. The applications of an ARM processor include several microcontrollers as well as processors. The architecture of an ARM processor was licensed by many corporations for designing ARM processor-based SoC products and CPUs. This allows the corporations to manufacture their products using ARM architecture. Likewise, all main semiconductor companies will make ARM-based SOCs such as Samsung, Atmel, TI etc.
 
@@ -27,7 +26,7 @@ UART (Universal Asynchronous Receiver-Transmitter) is a serial communication pro
 UART transmits and receives data asynchronously, meaning there is no shared clock signal between the sender and receiver. Instead, both devices must agree on a predefined baud rate (speed of communication).
 
 
-## Procedure
+# Procedure
 
 1. Click on STM 32 CUBE IDE, the following screen will appear
    
@@ -89,12 +88,53 @@ UART transmits and receives data asynchronously, meaning there is no shared cloc
 14. Check for execution of the output using run option.
 
 
-## STM 32 CUBE PROGRAM :
+# STM 32 CUBE PROGRAM :
+```c
+#include "main.h"
+#include "stdio.h"
+UART_HandleTypeDef huart2;
+int __io_putchar(int ch)
+{
+  HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, HAL_MAX_DELAY);
+  return ch;
+}
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART2_UART_Init(void);
+
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+  MX_USART2_UART_Init();
+  
+  while (1)
+  {
+   
+     printf("Saveetha Engineering College\n");
+     HAL_Delay(500);
+  }
+}
+```
+
+# Output 
+## STM32 Board
+<img width="1600" height="1200" alt="WhatsApp Image 2026-11-17 at 2 16 27 PM" src="https://github.com/user-attachments/assets/48e3f599-d6e1-4e69-a6bc-c757d9e11508" />
+
+## STM32 Cube Programmer
+<img width="1363" height="739" alt="Screenshot 2026-11-17 132845" src="https://github.com/user-attachments/assets/26178c97-b94e-4029-93d6-b7f1a5b2986d" />
+
+## Serial port utility   :
+
+<img width="1363" height="765" alt="Screenshot 2026-11-17 133145" src="https://github.com/user-attachments/assets/6aceefe7-ccd2-437f-b278-a8a288e1b6fc" />
+
+<img width="1365" height="762" alt="Screenshot 2026-11-17 133046" src="https://github.com/user-attachments/assets/7bb6f6b3-4e3d-486c-a549-acadf42b02da" />
 
 
 
-## Output screen shots of Serial port utility   :
- 
  
  
  
